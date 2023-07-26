@@ -8,7 +8,7 @@ var task=Mock.mock({
     requirement:'@cparagraph()',
     'submit_format':'[学号][姓名][实验1]',//提交文件命名规范，每部分用[]包含（比如[学号][姓名]）
     submit_type:'docx/doc',
-    exercise:[{
+    exercises:[{
         exercise_id:'@integer(1,10000)',
         'exercise_type|0-9':0,//题型（0选择；1填空；2名词解释；3简答；4综合；5分析；6编程；7判断；8建模；9设计）
         'difficulty|0-4':0,//难度（0简单；1较易；2一般；3：难；4：极难）
