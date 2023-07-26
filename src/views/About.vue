@@ -1,4 +1,5 @@
 <template>
+  <Pop v-if="ispop" @click="tanchuang"></Pop>
   <div class="timetable w100 h100">
     <div class="time-b w100">
       <div class="time-detail">{{ startTime }} - {{ endTime }}</div>
@@ -60,8 +61,8 @@
                   },
                 ]"
               >
-                <div
-                  class="dmsjandjs-b"
+                <div @click="tanchuang"
+                  class="single-td"
                   :style="[
                     {
                       background: showData(index3, index2).index
@@ -94,10 +95,15 @@
  
 <script>
 import moment from "moment";
+import Pop from '../components/Pop.vue'
 import { weekCourse, colorList } from "./Timetable";
 export default {
+  components:{
+    Pop
+  },
   data() {
     return {
+      ispop:false,
       startTime: "2022.10.17",
       endTime: "2022.10.23",
       colorList: [], //随机颜色
@@ -115,6 +121,10 @@ export default {
     this.getWeek(0);
   },
   methods: {
+    tanchuang(){
+      this.ispop=!this.ispop;
+      console.log("点击了一次")
+    },
     //改变选择器次数
     changeCount(i) {
       this.count += i;
@@ -240,7 +250,7 @@ export default {
 };
 </script>
  
-<!-- <style scoped lang="scss">
+<style scoped lang="scss">
 .timetable {
   background-color: #f1f7ff;
   .w100 {
@@ -261,6 +271,9 @@ export default {
       font-size: 20px;
       font-family: "Microsoft YaHei";
     }
+  }
+  .single-td{
+    cursor: pointer;
   }
   .timetable-b {
     height: 1207px;
@@ -316,4 +329,4 @@ export default {
     }
   }
 }
-</style> -->
+</style>
