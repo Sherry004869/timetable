@@ -9,6 +9,7 @@ let weekCourse = [
           subject: "高等数学", //学科
           major: "计算机科学与技术", //专业
           class: "1702班", //班级
+          teacher:"whb",//教师
         },
         {
           index: 3,

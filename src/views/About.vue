@@ -1,5 +1,13 @@
 <template>
-  <Pop v-if="ispop" @click="tanchuang"></Pop>
+  <Pop v-if="ispop" @click="popmiss">
+    <p>{{ singleCourse[0].startTime }}-{{ singleCourse[0].endTime }}</p>
+    <p>{{ singleCourse[0].subject }}</p>
+    <p>{{ singleCourse[0].major }}</p>
+    <p>{{ singleCourse[0].class }}</p>
+    <!-- <p>{{ singleCourse[0].teacher }}</p> -->
+    <el-button>Default</el-button>
+    <el-button type="primary" :icon="Edit" circle />
+  </Pop>
   <div class="timetable w100 h100">
     <div class="time-b w100">
       <div class="time-detail">{{ startTime }} - {{ endTime }}</div>
@@ -61,7 +69,7 @@
                   },
                 ]"
               >
-                <div @click="tanchuang"
+                <div @click="popshow(showData(index3,index2))"
                   class="single-td"
                   :style="[
                     {
@@ -111,6 +119,7 @@ export default {
       weeks: [], //头部周期
       maxCourseLength: 0, //最大课节数,
       count: 0, //上周、下周、本周选择器flag
+      singleCourse:[],
     };
   },
   created() {
@@ -121,9 +130,13 @@ export default {
     this.getWeek(0);
   },
   methods: {
-    tanchuang(){
+    popmiss(){
       this.ispop=!this.ispop;
-      console.log("点击了一次")
+    },
+    popshow(e){
+      this.ispop=!this.ispop;
+      // this.singleCourse[0]=this.weekCourse[0].courses[0];
+      this.singleCourse[0]=e;
     },
     //改变选择器次数
     changeCount(i) {
@@ -276,7 +289,7 @@ export default {
     cursor: pointer;
   }
   .timetable-b {
-    height: 1207px;
+    height: 625px;
     background-color: #fff;
     overflow: auto;
     .timetable-content {

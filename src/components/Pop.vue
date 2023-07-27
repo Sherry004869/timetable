@@ -1,7 +1,9 @@
 <template>
     <div class="mask">
         <div class="box">
-            此处展示课程具体信息和其他功能
+            <slot>
+
+            </slot>
         </div>
     </div>
 </template>
@@ -23,10 +25,10 @@ export default{
 .box{
     background: white;
     margin: 0 auto;
-    margin-top: 160px;
-    width:100px;
-    height: 150px;
+    width:  150px;
+    height: 200px;
     padding: 40px;
     border-radius: 8px;
+    margin-top: 80px;
 }
 </style>
